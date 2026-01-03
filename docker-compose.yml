@@ -1,0 +1,17 @@
+services:
+  api:
+    build: .
+    command: python -m movie_recommender.cli.main serve-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+  ui:
+    build: .
+    command: python -m movie_recommender.cli.main serve-ui
+    ports:
+      - "8501:8501"
+    volumes:
+      - .:/app
+    depends_on:
+      - api

@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "movie-recommender-system"
+version = "0.1.0"
+description = "Modern hybrid movie recommendation system with FastAPI, Streamlit, PyTorch, and open-source LLM integrations."
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [
+  {name = "Codex"}
+]
+dependencies = [
+  "fastapi>=0.115.0",
+  "mlflow>=3.10.0",
+  "numpy>=2.1.0",
+  "pandas>=2.2.0",
+  "pydantic>=2.10.0",
+  "requests>=2.32.0",
+  "scikit-learn>=1.5.0",
+  "scipy>=1.14.0",
+  "sentence-transformers>=3.0.0",
+  "streamlit>=1.40.0",
+  "torch>=2.5.0",
+  "transformers>=4.45.0",
+  "sentencepiece>=0.2.0",
+  "uvicorn>=0.32.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.28.0",
+  "pytest>=8.3.0",
+]
+
+[project.scripts]
+movie-recommender = "movie_recommender.cli.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
